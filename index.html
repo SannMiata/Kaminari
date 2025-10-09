@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceHub - Jasa Top Up, Desain & Networking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#F59E0B',
+                        background: '#FFFFFF',
+                        foreground: '#1F2937',
+                        muted: '#F3F4F6',
+                        border: '#E5E7EB'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .cart-notification {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .cart-item-enter {
+            animation: fadeIn 0.2s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold text-primary">ServiceHub</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-foreground hover:text-primary transition">Beranda</a>
+                <a href="#services" class="text-foreground hover:text-primary transition">Layanan</a>
+                <a href="#about" class="text-foreground hover:text-primary transition">Tentang Kami</a>
+                <a href="#contact" class="text-foreground hover:text-primary transition">Kontak</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="cart-btn" class="relative p-2 rounded-full hover:bg-muted transition">
+                    <i class="fas fa-shopping-cart text-xl text-foreground"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+                
+                <button class="md:hidden" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl text-foreground"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-border px-4 py-2">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="py-2 text-foreground hover:text-primary transition">Beranda</a>
+                <a href="#services" class="py-2 text-foreground hover:text-primary transition">Layanan</a>
+                <a href="#about" class="py-2 text-foreground hover:text-primary transition">Tentang Kami</a>
+                <a href="#contact" class="py-2 text-foreground hover:text-primary transition">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-primary to-blue-700 text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Layanan Terbaik untuk Kebutuhan Digital Anda</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Top up game, jasa desain profesional, dan solusi networking terpercaya dalam satu platform.</p>
+            <a href="#services" class="bg-accent hover:bg-yellow-500 text-white font-bold py-3 px-6 rounded-lg transition inline-block">Jelajahi Layanan</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-muted">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Layanan Kami</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Top Up Service -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Digital%20game%20currency%20and%20gaming%20accessories%20with%20vibrant%20colors&id=3fac1c42-94c5-4403-927e-3b47f8bd903b" alt="Layanan top up game dengan berbagai pilihan currency digital" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Top Up Game</h3>
+                        <p class="text-secondary mb-4">Isi ulang diamond, koin, atau currency game favorit Anda dengan proses cepat dan aman.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-primary">Rp 10.000 - Rp 500.000</span>
+                            <button class="add-to-cart bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded transition" data-service="Top Up Game" data-price="10000">
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Design Service -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Creative%20design%20process%20with%20digital%20tools%20and%20graphic%20elements&id=4fac2c52-94c5-4403-927e-3b47f8bd903c" alt="Jasa desain grafis profesional untuk berbagai kebutuhan" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Jasa Desain</h3>
+                        <p class="text-secondary mb-4">Logo, banner, social media content, dan desain profesional lainnya sesuai kebutuhan bisnis Anda.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-primary">Rp 50.000 - Rp 1.000.000</span>
+                            <button class="add-to-cart bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded transition" data-service="Jasa Desain" data-price="50000">
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Networking Service -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Network%20infrastructure%20with%20servers%2C%20routers%2C%20and%20cables&id=5fac3c62-94c5-4403-927e-3b47f8bd903d" alt="Jasa networking dan instalasi jaringan komputer profesional" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Jasa Networking</h3>
+                        <p class="text-secondary mb-4">Instalasi, maintenance, dan troubleshooting jaringan komputer untuk rumah dan bisnis.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-primary">Rp 200.000 - Rp 5.000.000</span>
+                            <button class="add-to-cart bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded transition" data-service="Jasa Networking" data-price="200000">
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-50 transform translate-x-full transition-transform">
+        <div class="p-4 border-b border-border flex justify-between items-center">
+            <h3 class="text-lg font-bold">Keranjang Belanja</h3>
+            <button id="close-cart" class="text-secondary hover:text-foreground">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="p-4 h-[calc(100%-140px)] overflow-y-auto">
+            <div id="cart-items" class="space-y-4">
+                <!-- Cart items will be added here dynamically -->
+                <p id="empty-cart-message" class="text-center text-secondary py-8">Keranjang belanja Anda kosong</p>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 right-0 border-t border-border p-4 bg-white">
+            <div class="flex justify-between mb-4">
+                <span class="font-bold">Total:</span>
+                <span id="cart-total" class="font-bold text-primary">Rp 0</span>
+            </div>
+            <button id="checkout-btn" class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded font-bold transition">
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/2 max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold">Checkout</h3>
+                    <button id="close-checkout" class="text-secondary hover:text-foreground">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="checkout-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Nama Lengkap</label>
+                        <input type="text" required class="w-full p-3 border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Email</label>
+                        <input type="email" required class="w-full p-3 border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Nomor Telepon</label>
+                        <input type="tel" required class="w-full p-3 border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Detail Layanan</label>
+                        <textarea required class="w-full p-3 border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary h-24" placeholder="Jelaskan detail layanan yang Anda pesan..."></textarea>
+                    </div>
+                    
+                    <div class="pt-4 border-t border-border">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="font-bold">Total Pembayaran:</span>
+                            <span id="checkout-total" class="font-bold text-primary">Rp 0</span>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded font-bold transition">
+                            Konfirmasi Pesanan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg cart-notification hidden z-50">
+        Item ditambahkan ke keranjang!
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Tentang ServiceHub</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://placeholder-image-service.onrender.com/image/500x400?prompt=Team%20of%20professionals%20working%20on%20digital%20services%20and%20customer%20support&id=6fac4c72-94c5-4403-927e-3b47f8bd903e" alt="Tim profesional ServiceHub yang siap melayani kebutuhan digital Anda" class="rounded-lg shadow-md">
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Satu Platform untuk Semua Kebutuhan Digital Anda</h3>
+                    <p class="text-secondary mb-6">ServiceHub hadir sebagai solusi terpercaya untuk berbagai kebutuhan digital, mulai dari top up game, jasa desain profesional, hingga instalasi jaringan.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary rounded-full p-2 mr-4 mt-1">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Proses Cepat dan Aman</h4>
+                                <p class="text-secondary">Transaksi diproses dengan sistem keamanan terenkripsi</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary rounded-full p-2 mr-4 mt-1">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Tim Profesional</h4>
+                                <p class="text-secondary">Dilayani oleh ahli yang berpengalaman di bidangnya</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary rounded-full p-2 mr-4 mt-1">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Harga Terjangkau</h4>
+                                <p class="text-secondary">Dengan kualitas terbaik di harga kompetitif</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-muted">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Hubungi Kami</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Informasi Kontak</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary rounded-full p-3 mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Alamat</h4>
+                                <p class="text-secondary">Jl. Digital No. 123, Jakarta Selatan</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary rounded-full p-3 mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Telepon</h4>
+                                <p class="text-secondary">+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary rounded-full p-3 mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-secondary">info@ServiceHub.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary rounded-full p-3 mr-4">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">WhatsApp</h4>
+                                <p class="text-secondary">+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Kirim Pesan</h3>
+                    
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Nama Lengkap</label>
+                            <input type="text" class="w-full p-3 border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Email</label>
+                            <input type="email" class="w-full p-3 border border-border rounded focus:outline-none f
