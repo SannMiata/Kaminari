@@ -1,21 +1,49 @@
-<header class="flex items-center justify-between px-4 py-3 bg-black bg-opacity-70 shadow-lg">
-  <div class="flex items-center space-x-3">
-    <img src="https://raw.githubusercontent.com/SannMiata/Kaminari/refs/heads/main/Kaminari%20E-%20Commerce%20.jpg" alt="Logo Kaminari" class="w-10 h-10 rounded-full border border-cyan-400 shadow-md">
-    <h1 class="text-xl font-bold text-cyan-400 drop-shadow-[0_0_10px_#00ffff]">
-      Kaminari Store
-    </h1>
-  </div>
-</header>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaminari Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-<main class="flex flex-col items-center justify-center text-center py-16 px-4 bg-gradient-to-b from-gray-900 to-black min-h-screen">
-  <h2 class="text-3xl font-bold text-cyan-400 drop-shadow-[0_0_10px_#00ffff] mb-4">
-    Kaminari Store
-  </h2>
-  <p class="text-gray-300 text-sm md:text-base mb-6">
-    Top Up, Design, Networking — Cepat, Aman, dan Berkualitas Tinggi
-  </p>
-  <button onclick="window.location.href='#layanan'"
-    class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300">
-    <a href="layanan.html" class="btn">Jelajahi Layanan Kami</a>
-  </button>
-</main>
+<body class="bg-gradient-to-b from-gray-900 via-black to-gray-950 text-white min-h-screen font-sans">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full flex items-center justify-between px-5 py-3
+                 bg-black bg-opacity-60 backdrop-blur-sm shadow-lg z-50 border-b border-cyan-500/30">
+    <div class="flex items-center space-x-3">
+      <!-- LOGO -->
+      <img src="https://raw.githubusercontent.com/SannMiata/Kaminari/refs/heads/main/Kaminari%20E-%20Commerce%20.jpg" alt="Logo Kaminari" class="w-10 h-10 rounded-full border border-cyan-400 shadow-md">
+      <!-- NAMA BRAND -->
+      <h1 class="text-xl md:text-2xl font-bold text-cyan-400 drop-shadow-[0_0_10px_#00ffff]">
+        Kaminari Store
+      </h1>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="relative flex flex-col items-center justify-center text-center min-h-screen px-4 pt-20 pb-16">
+    
+    <!-- LAPISAN TRANSPARAN -->
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+    <!-- ISI -->
+    <div class="relative z-10">
+      <img src="logo.png" alt="Logo Besar Kaminari" class="w-32 h-32 mx-auto mb-6 rounded-full shadow-lg border border-cyan-500/40">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-cyan-400 drop-shadow-[0_0_15px_#00ffff] mb-4">
+        Kaminari Store
+      </h2>
+      <p class="text-gray-300 text-base md:text-lg mb-8 max-w-md mx-auto leading-relaxed">
+        Top Up, Design, Networking — Cepat, Aman, dan Berkualitas Tinggi
+      </p>
+      <a href="layanan.html"
+         class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-8 py-3 rounded-xl 
+                shadow-lg transition-all duration-300 hover:scale-105">
+         Jelajahi Layanan Kami
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>
